@@ -1,0 +1,57 @@
+---
+title: "Machine Learning assignment"
+author: "JayR"
+date: "20/06/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load required libraries
+```{r}
+library(tidyverse)
+library(caret)
+library(skimr)
+```
+
+Import data
+```{r, include = FALSE}
+training <- read_csv("./data/pml-training.csv")
+testing <- read_csv("./data/pml-testing.csv")
+```
+```{r}
+dim(training)
+dim(testing)
+```
+
+- How you built your model
+- how you used cross validation
+- what you think the expected out of sample error is
+- Why you made the choices you did
+
+View data
+```{r}
+head(training)
+```
+
+```{r}
+skim(training)
+```
+
+```{r}
+training_complete_cols <- training %>% select_if(~ !any(is.na(.)))
+skim(training_complete_cols)
+```
+
+
+```{r}
+modFit1 <- train(classe ~., data = training_complete_cols, method = "rf")
+```
+```{r}
+modGBM1 <- train(class ~., data = training_complete_cols, method = "gbm")
+```
+```{r}
+modLDA1 <- train(class ~., data = training_complete_cols, method = "lda")
+```
