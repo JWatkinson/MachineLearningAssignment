@@ -1,0 +1,2 @@
+"0","set.seed(25621)"
+"0","modFitGBM <- train(classe ~., data = traindata, method = ""gbm"", verbose = FALSE)"

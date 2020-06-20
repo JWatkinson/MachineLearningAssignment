@@ -1,0 +1,12 @@
+# Git Bash help file
+
+# Change directory:
+
+cd C:/Users/jwatk/Documents/R/"R Data Science Course"/R-Data-Science-Course
+
+cd C:/Users/JWatkinson/Documents/"R Data Science Course"/R-Data-Science-Course/
+
+# Update cloned repp:
+
+git pull origin master
+

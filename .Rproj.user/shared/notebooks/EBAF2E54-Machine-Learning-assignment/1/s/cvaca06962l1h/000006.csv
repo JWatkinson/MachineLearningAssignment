@@ -1,0 +1,3 @@
+"0","Final_pred <- predict(modFitRF, testing_ed)"
+"2","Error in eval(predvars, data, env) : object 'roll_belt' not found
+"

@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1592675643785.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1503836272",
+    "id" : "A8FC5514",
+    "lastKnownWriteTime" : 1592692974,
+    "last_content_update" : 1592692974839,
+    "path" : "~/R/R Data Science Course/MachineLearningAssignment/Machine-Learning-assignment.Rmd",
+    "project_path" : "Machine-Learning-assignment.Rmd",
+    "properties" : {
+        "cursorPosition" : "153,3",
+        "last_setup_crc32" : "40F4DB3Dbb338d19",
+        "scrollLine" : "148"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

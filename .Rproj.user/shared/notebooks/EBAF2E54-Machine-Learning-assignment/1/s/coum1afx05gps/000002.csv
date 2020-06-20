@@ -1,0 +1,1 @@
+"0","training_ed$classe <- as.factor(training_ed$classe)"

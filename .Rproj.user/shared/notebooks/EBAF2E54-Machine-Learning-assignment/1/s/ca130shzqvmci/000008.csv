@@ -1,0 +1,1 @@
+"0","plot(confDecT$table, col = confDecT$byClass, main = ""Decision Tree Predictions"")"

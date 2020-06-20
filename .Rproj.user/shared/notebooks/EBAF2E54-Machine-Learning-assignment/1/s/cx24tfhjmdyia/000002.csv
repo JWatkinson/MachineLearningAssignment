@@ -1,0 +1,70 @@
+"0","training <- read_csv(""./data/pml-training.csv"")"
+"2","Missing column names filled in: 'X1' [1]"
+"2","Parsed with column specification:
+cols(
+  .default = col_double(),
+  user_name = [31mcol_character()[39m,
+  cvtd_timestamp = [31mcol_character()[39m,
+  new_window = [31mcol_character()[39m,
+  kurtosis_roll_belt = [31mcol_character()[39m,
+  kurtosis_picth_belt = [31mcol_character()[39m,
+  kurtosis_yaw_belt = [31mcol_character()[39m,
+  skewness_roll_belt = [31mcol_character()[39m,
+  skewness_roll_belt.1 = [31mcol_character()[39m,
+  skewness_yaw_belt = [31mcol_character()[39m,
+  max_yaw_belt = [31mcol_character()[39m,
+  min_yaw_belt = [31mcol_character()[39m,
+  amplitude_yaw_belt = [31mcol_character()[39m,
+  kurtosis_picth_arm = [31mcol_character()[39m,
+  kurtosis_yaw_arm = [31mcol_character()[39m,
+  skewness_pitch_arm = [31mcol_character()[39m,
+  skewness_yaw_arm = [31mcol_character()[39m,
+  kurtosis_yaw_dumbbell = [31mcol_character()[39m,
+  skewness_yaw_dumbbell = [31mcol_character()[39m,
+  kurtosis_roll_forearm = [31mcol_character()[39m,
+  kurtosis_picth_forearm = [31mcol_character()[39m
+  # ... with 8 more columns
+)
+"
+"2","See spec(...) for full column specifications.
+"
+"2","182 parsing failures.
+ row               col expected  actual                      file
+2231 kurtosis_roll_arm a double #DIV/0! './data/pml-training.csv'
+2231 skewness_roll_arm a double #DIV/0! './data/pml-training.csv'
+2255 kurtosis_roll_arm a double #DIV/0! './data/pml-training.csv'
+2255 skewness_roll_arm a double #DIV/0! './data/pml-training.csv'
+2282 kurtosis_roll_arm a double #DIV/0! './data/pml-training.csv'
+.... ................. ........ ....... .........................
+See problems(...) for more details.
+"
+"0","testing <- read_csv(""./data/pml-testing.csv"")"
+"2","Missing column names filled in: 'X1' [1]"
+"2","Parsed with column specification:
+cols(
+  .default = col_logical(),
+  X1 = [32mcol_double()[39m,
+  user_name = [31mcol_character()[39m,
+  raw_timestamp_part_1 = [32mcol_double()[39m,
+  raw_timestamp_part_2 = [32mcol_double()[39m,
+  cvtd_timestamp = [31mcol_character()[39m,
+  new_window = [31mcol_character()[39m,
+  num_window = [32mcol_double()[39m,
+  roll_belt = [32mcol_double()[39m,
+  pitch_belt = [32mcol_double()[39m,
+  yaw_belt = [32mcol_double()[39m,
+  total_accel_belt = [32mcol_double()[39m,
+  gyros_belt_x = [32mcol_double()[39m,
+  gyros_belt_y = [32mcol_double()[39m,
+  gyros_belt_z = [32mcol_double()[39m,
+  accel_belt_x = [32mcol_double()[39m,
+  accel_belt_y = [32mcol_double()[39m,
+  accel_belt_z = [32mcol_double()[39m,
+  magnet_belt_x = [32mcol_double()[39m,
+  magnet_belt_y = [32mcol_double()[39m,
+  magnet_belt_z = [32mcol_double()[39m
+  # ... with 40 more columns
+)
+"
+"2","See spec(...) for full column specifications.
+"

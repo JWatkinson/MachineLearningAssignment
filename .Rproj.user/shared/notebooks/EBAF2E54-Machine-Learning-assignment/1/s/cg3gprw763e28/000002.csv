@@ -1,0 +1,1 @@
+"0","plot(confLDA$table, col = confLDA$byClass, main = ""Linear Discriminant Analysis Predictions"")"

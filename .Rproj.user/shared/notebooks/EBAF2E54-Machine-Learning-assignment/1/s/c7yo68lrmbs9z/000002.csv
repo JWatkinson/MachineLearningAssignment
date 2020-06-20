@@ -1,0 +1,7 @@
+"0","training_ed <- training %>%"
+"0","  select_if(~ !any(is.na(.))) %>%"
+"0","  select(-c(X1:num_window))"
+"0",""
+"0","testing_ed <- testing %>%"
+"0","  select_if(~ !any(is.na(.))) %>%"
+"0","  select(-c(X1:num_window))"

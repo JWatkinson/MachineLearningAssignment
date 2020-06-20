@@ -1,0 +1,181 @@
+---
+title: "Machine Learning assignment"
+author: "JayR"
+date: "20/06/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Synopsis
+
+The aim of this project is to create a model that uses data to predict outcomes. The data being analysed is from accelerometers on the belt, forearm, arm and dumbell of 6 paritipants. The participants were asked to perform barbell lifts correctly and incorrectly in 5 different ways.
+
+Load required libraries
+```{r, echo = FALSE}
+library(tidyverse)
+library(caret)
+library(skimr)
+library(rattle)
+```
+
+## Data analysis
+
+Import data
+```{r, include = FALSE}
+training <- read_csv("./data/pml-training.csv")
+testing <- read_csv("./data/pml-testing.csv")
+```
+```{r}
+dim(training)
+dim(testing)
+```
+
+View data
+```{r}
+head(training)
+```
+
+Look at how complete the columns are
+```{r, include = FALSE}
+skim(training)
+```
+
+There are several columns that are less than 3% complete - remove these columns from the training and testing datasets. Also remove any non-numeric variables (except `classe`)
+```{r}
+training_ed <- training %>%
+  select_if(~ !any(is.na(.))) %>%
+  select(-c(X1:num_window))
+
+testing_ed <- testing %>%
+  select_if(~ !any(is.na(.))) %>%
+  select(-c(X1:num_window))
+```
+
+Set `classe` as a factor
+```{r}
+training_ed$classe <- as.factor(training_ed$classe)
+```
+
+## Data partitioning
+
+Split the training data into training and testing datasets
+```{r}
+set.seed(100)
+inTrain <- createDataPartition(training_ed$classe, p = 0.6, list = FALSE)
+
+traindata <- training_ed[inTrain,]
+testdata <- training_ed[-inTrain,]
+dim(traindata)
+dim(testdata)
+```
+
+## Use cross validation to construct models
+
+# Decision Tree Model
+
+```{r, include = FALSE, echo = FALSE}
+modFitDecT <- train(classe ~., data = traindata, method = "rpart")
+```
+```{r}
+fancyRpartPlot(modFitDecT$finalModel)
+```
+
+
+
+```{r}
+predDecT <- predict(modFitDecT, testdata)
+confDecT <- confusionMatrix(predDecT, testdata$classe)
+confDecT
+```
+
+The Decision Tree model predicts with `confDecT$overall[["Accuracy"]]`
+
+```{r}
+table(predDecT, testdata$classe)
+```
+
+```{r}
+plot(confDecT$table, col = confDecT$byClass, main = "Decision Tree Predictions")
+```
+
+# Gradient Boosting Model
+
+```{r, include = FALSE, echo = FALSE}
+#modFitGBM <- train(classe ~., data = traindata, method = "gbm", verbose = FALSE)
+```
+
+
+```{r}
+#predGBM <- predict(modFitGBM, testdata)
+#confGBM <- confusionMatrix(predGBM, testdata$classe)
+#confGBM
+```
+
+The Gradient Boosting model predicts with `confGBM$overall[["Accuracy"]]`
+
+```{r}
+#table(predGBM, testdata$Classe)
+```
+
+
+```{r}
+#plot(confGBM$table, col = confGBM$byClass, main = "Gradient Boosting Predictions")
+```
+
+
+# Linear Discriminant Analysis model
+
+```{r, include = FALSE, echo = FALSE}
+modFitLDA <- train(classe ~., data = traindata, method = "lda")
+```
+
+```{r}
+predLDA <- predict(modFitLDA, testdata)
+confLDA <- confusionMatrix(predLDA, testdata$classe)
+confLDA
+```
+
+The Linear Discriminant Analysis model predicts with `confLDA$overall[["Accuracy"]]`
+
+```{r}
+table(predLDA, testdata$classe)
+```
+
+```{r}
+plot(confLDA$table, col = confLDA$byClass, main = "Linear Discriminant Analysis Predictions")
+```
+
+# Random Forest Model
+
+```{r, include = FALSE, cache = TRUE}
+modFitRF <- train(classe ~., data = traindata, method = "rf", ntree = 100)
+```
+
+```{r}
+predRF <- predict(modFitRF, testdata)
+confRF <- confusionMatrix(predRF, testdata$classe)
+confRF
+```
+
+The Random Forest model predicts with `confRF$overall[["Accuracy"]]`
+
+```{r}
+table(predRF, testdata$classe)
+```
+
+```{r}
+plot(confRF$table, col = confRF$byClass, main = "Random Forest Predictions")
+```
+
+## Final model chosen
+
+The Random Forest model has produced the highest accuracy so is likely to be the best model to chose.
+
+# Final prediction
+```{r}
+Final_pred <- predict(modFitRF, testing_ed)
+Final_pred
+```

@@ -1,0 +1,3 @@
+"0","modFitRF <- train(classe ~., data = traindata, method = ""rf"", ntree = 100)"
+"2","
+"
