@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Synopsis
+# Synopsis
 
 The aim of this project is to create a model that uses data to predict outcomes. The data being analysed is from accelerometers on the belt, forearm, arm and dumbell of 6 paritipants. The participants were asked to perform barbell lifts correctly and incorrectly in 5 different ways.
 
@@ -22,7 +22,7 @@ library(rattle)
 library(gbm)
 ```
 
-## Data analysis
+# Data analysis
 
 Import data
 ```{r, results = FALSE}
@@ -60,7 +60,7 @@ Set `classe` as a factor
 training_ed$classe <- as.factor(training_ed$classe)
 ```
 
-## Data partitioning
+# Data partitioning
 
 Split the training data into training and testing datasets
 ```{r}
@@ -73,9 +73,9 @@ dim(traindata)
 dim(testdata)
 ```
 
-## Use cross validation to construct models
+# Use cross validation to construct models
 
-# Decision Tree Model
+## Decision Tree Model
 
 ```{r, results = FALSE}
 modFitDecT <- train(classe ~., data = traindata, method = "rpart")
@@ -102,7 +102,7 @@ table(predDecT, testdata$classe)
 plot(confDecT$table, col = confDecT$byClass, main = "Decision Tree Predictions")
 ```
 
-# Gradient Boosting Model
+## Gradient Boosting Model
 
 ```{r, results = FALSE, cache = TRUE}
 set.seed(25621)
@@ -125,8 +125,7 @@ table(predGBM, testdata$classe)
 plot(confGBM$table, col = confGBM$byClass, main = "Gradient Boosting Predictions")
 ```
 
-
-# Linear Discriminant Analysis model
+## Linear Discriminant Analysis model
 
 ```{r, results = FALSE}
 modFitLDA <- train(classe ~., data = traindata, method = "lda")
@@ -148,7 +147,7 @@ table(predLDA, testdata$classe)
 plot(confLDA$table, col = confLDA$byClass, main = "Linear Discriminant Analysis Predictions")
 ```
 
-# Random Forest Model
+## Random Forest Model
 
 ```{r, results = FALSE, cache = TRUE}
 modFitRF <- train(classe ~., data = traindata, method = "rf", ntree = 100)
@@ -170,11 +169,11 @@ table(predRF, testdata$classe)
 plot(confRF$table, col = confRF$byClass, main = "Random Forest Predictions")
 ```
 
-## Final model chosen
+# Final model chosen
 
 The Random Forest model has produced the highest accuracy so is likely to be the best model to chose.
 
-# Final prediction
+## Final prediction
 ```{r}
 Final_pred <- predict(modFitRF, testing_ed)
 Final_pred
