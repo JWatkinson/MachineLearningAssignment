@@ -115,7 +115,7 @@ confGBM <- confusionMatrix(predGBM, testdata$classe)
 confGBM
 ```
 
-The Gradient Boosting model predicts with accuracy of `r # confGBM$overall[["Accuracy"]]`.
+The Gradient Boosting model predicts with accuracy of `r confGBM$overall[["Accuracy"]]`.
 
 ```{r}
 table(predGBM, testdata$classe)

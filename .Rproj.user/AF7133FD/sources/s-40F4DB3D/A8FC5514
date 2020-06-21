@@ -5,16 +5,16 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1503836272",
+    "hash" : "560736005",
     "id" : "A8FC5514",
-    "lastKnownWriteTime" : 1592692974,
-    "last_content_update" : 1592692974839,
+    "lastKnownWriteTime" : 1592698613,
+    "last_content_update" : 1592698613254,
     "path" : "~/R/R Data Science Course/MachineLearningAssignment/Machine-Learning-assignment.Rmd",
     "project_path" : "Machine-Learning-assignment.Rmd",
     "properties" : {
-        "cursorPosition" : "153,3",
+        "cursorPosition" : "117,56",
         "last_setup_crc32" : "40F4DB3Dbb338d19",
-        "scrollLine" : "148"
+        "scrollLine" : "116"
     },
     "read_only" : false,
     "read_only_alternatives" : [
